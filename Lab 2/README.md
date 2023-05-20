@@ -17,27 +17,9 @@
 2.C помощью утилиты Zeek была выделена метаинформация сетевого трафика
 (файлы http.log и dns.log в репозитории)
 
-3.Загрузим и соединим файлы, содержащие списки источников нежелательного
-трафика:
-
-```
-mkdir hosts
-wget -q https://github.com/StevenBlack/hosts/raw/master/data/add.2o7Net/hosts -O hosts/hosts.1
-wget -q https://raw.githubusercontent.com/StevenBlack/hosts/master/data/KADhosts/hosts -O hosts/hosts.2
-wget -q https://raw.githubusercontent.com/StevenBlack/hosts/master/data/yoyo.org/hosts -O hosts/hosts.3
-wget -q https://raw.githubusercontent.com/StevenBlack/hosts/master/data/tiuxo/hosts -O hosts/hosts.4
-wget -q https://raw.githubusercontent.com/StevenBlack/hosts/master/data/URLHaus/hosts -O hosts/hosts.5
-wget -q https://raw.githubusercontent.com/StevenBlack/hosts/master/data/mvps.org/hosts -O hosts/hosts.6
-sort hosts/hosts* | grep -Eo '^([^\\"'\''#]|\\.|"([^\\"]|\\.)*"|'\''[^'\'']*'\'')*' | uniq > 123.csv
-rm -rf hosts
-```
-
 В результате был получен файл 123.csv
 
-4.Объединив два полученных датафрейма, получим итоговое количество
-нежелательного трафика:
-
-Высчитываем процент нежелательного трафика с помощью программы на Python
+4. Высчитываем процент нежелательного трафика с помощью программы на Python
 
 ```
 data = open(r"T:\.temp\123.csv",'r',encoding="utf-8").read()
