@@ -17,7 +17,9 @@
     Для работы ElasticSearch требуется увеличить размер виртуальной памяти системы:
 
 ```
-sudo sysctl -w vm.max_map_count=262144
+┌──(root㉿kali)-[/home/kali]
+└─# sysctl -w vm.max_map_count=262144
+vm.max_map_count = 262144
 ```
 
 Далее следуем инструкции по ссылке:
@@ -27,26 +29,33 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
 2. После формирования файлов с конфигурациями, нужно запустить образы командой
 
 ```
-docker-compose up -d
+┌──(root㉿kali)-[/home/kali/Desktop/dockerr]
+└─# docker-compose up -d          
+Starting packetbeat ... 
+nginx is up-to-date
+dockerr_setup_1 is up-to-date
+Starting filebeat   ... 
+dockerr_es01_1 is up-to-date
+dockerr_es02_1 is up-to-date
+Starting packetbeat ... done
+Starting filebeat   ... done
 ```
-
-СКРИН!
 
 3. Переходим на `localhost:5061` и авторизируемся
 
-СКРИН!
+![All text](./screenshots/lab_3_3.png)
 
 4. Проверям, что установленны все средства для сбора информации из файлов журналов и сбора аналитики трафика
 
-СКРИН!
+![All text](./screenshots/lab_3_4.png)
 
 5. Создаем новый data view для filebeat
 
-СКРИН!
+![All text](./screenshots/lab_3_5.png)
 
 6. Создаем новый data view для packetbeat
 
-СКРИН!
+![All text](./screenshots/lab_3_6.png)
 
 ## Оценка результата
 
