@@ -6,7 +6,7 @@
 3.Закрепить знания о современных сетевых протоколах прикладного уровня
 ## Ход выполнения практической работы
 1.C помощью Wireshark был собран сетевой трафик объёмом 100 Мб:
-
+![All text](./screenshots/lab_2_0.png)
 2.C помощью утилиты Zeek была выделена метаинформация сетевого трафика
 (файлы http.log и dns.log в репозитории)
 3.Загрузим и соединим файлы, содержащие списки источников нежелательного
@@ -19,17 +19,11 @@ wget -q https://raw.githubusercontent.com/StevenBlack/hosts/master/data/yoyo.org
 wget -q https://raw.githubusercontent.com/StevenBlack/hosts/master/data/tiuxo/hosts -O hosts/hosts.4
 wget -q https://raw.githubusercontent.com/StevenBlack/hosts/master/data/URLHaus/hosts -O hosts/hosts.5
 wget -q https://raw.githubusercontent.com/StevenBlack/hosts/master/data/mvps.org/hosts -O hosts/hosts.6
-sort hosts/hosts* | grep -Eo '^([^\\"'\''#]|\\.|"([^\\"]|\\.)*"|'\''[^'\'']*'\'')*' | uniq > hosts.data
+sort hosts/hosts* | grep -Eo '^([^\\"'\''#]|\\.|"([^\\"]|\\.)*"|'\''[^'\'']*'\'')*' | uniq > 123.csv
 rm -rf hosts
 ```
-В результате был получен файл hosts.data.
-4.Получим список посещённых веб-сайтов, преобразовав файл dns.log в
-датафрейм:
-``` 
-data <- read.csv('dns.log',header=FALSE,sep='   ',skip=8)
-domains = data$V10
-```
-6.Объединив два полученных датафрейма, получим итоговое количество
+В результате был получен файл 123.csv
+4.Объединив два полученных датафрейма, получим итоговое количество
 нежелательного трафика:
 Высчитываем процент нежелательного трафика с помощью программы на Python
 ```
